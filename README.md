@@ -42,4 +42,11 @@ Pair programming exercise to build a website for a fictional coffee company.
     The page looks pretty plain as it is, and the refactoring we did above to
     use `div`s for coffees should give us more flexibility in styling. (*Hint:
     the styling shown in the example below can be achieved purely with bootstrap
-    classes, that is, without custom CSS*)
+    classes, that is, without custom CSS*)   
+
+## Example
+
+Here is an example demonstrating the above functionality. Your application might
+look different, but should have the same features.
+
+![Cofee Project Demo](./images/demo.gif)
