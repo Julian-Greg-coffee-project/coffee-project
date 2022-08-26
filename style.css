@@ -1,9 +1,42 @@
-table {
-    border-collapse: collapse;
-    margin: 15px 0;
+/* Google Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro&display=swap');
+
+/* General Styling */
+
+:root {
+    --primary-font: 'Montserrat', sans-serif;
+    --secondary-font: 'Source Sans Pro', sans-serif;
 }
 
-td, th {
-    border: 1px solid black;
-    padding: 5px 10px;
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: var(--secondary-font);
+}
+
+h1 {
+    font-family: var(--primary-font);
+}
+
+/* Header */
+
+header {
+    font-size: 1.25rem;
+    text-align: center;
+    padding: 1em;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, 
+                rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+/* Tempory Borders to see containers */
+.results-container {
+    border: solid red 2px;
+}
+.search-container {
+    border: solid green 2px;
+}
+form {
+    border: solid purple 2px;
 }
