@@ -16,8 +16,13 @@ body {
     font-family: var(--secondary-font);
 }
 
-h1 {
+h1,
+label {
     font-family: var(--primary-font);
+}
+
+.search-form {
+    border-bottom: solid lightgray 2px;
 }
 
 /* Header */
@@ -36,7 +41,4 @@ header {
 }
 .search-container {
     border: solid green 2px;
-}
-form {
-    border: solid purple 2px;
 }
