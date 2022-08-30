@@ -26,6 +26,7 @@
                 <form class="d-flex flex-column search-form">
                     <label for="roast-selection" class="fw-bold">Roast</label>
                     <select id="roast-selection">
+                        <option>all</option>
                         <option>light</option>
                         <option>medium</option>
                         <option>dark</option>
@@ -34,21 +35,41 @@
                     <label for="coffee-name-input" class="mt-3 fw-bold">Coffee Name</label>
                     <input type="text" id="coffee-name-input">
                     <input class="btn btn-primary my-3" id="submit" type="submit" />
-                </form>      
+                    <!-- Add a Coffee -->
+                    <h2 class="text-center">Add a Coffee</h2>
+                    <label for="add-roast-selection" class="fw-bold">Roast</label>
+                    <select id="add-roast-selection">
+                        <option>light</option>
+                        <option>medium</option>
+                        <option>dark</option>
+                    </select>
+                    <label for="coffee-name-input" class="mt-3 fw-bold">Coffee Name</label>
+                    <input type="text" id="add-coffee-name-input">
+                    <input class="btn btn-primary my-3" id="add-submit" type="submit" />
+                </form>
+
             </div>
 
             <!-- Results Container -->
-            <div class="col-md-6 results-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>NAME</th>
-                            <th>ROAST</th>
-                        </tr>
-                    </thead>
-                    <tbody id="coffees"></tbody>
-                </table>
+<!--            <div class="col-md-6 results-container">-->
+<!--                <table>-->
+<!--                    <thead>-->
+<!--                        <tr>-->
+<!--                            <th>ID</th>-->
+<!--                            <th>NAME</th>-->
+<!--                            <th>ROAST</th>-->
+<!--                        </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody id="coffees"></tbody>-->
+<!--                </table>-->
+<!--            </div>-->
+            <div class="row">
+                <div class="col-auto">
+                    <h5 id="coffeeName"></h5>
+                </div>
+                <div class="col-auto">
+                    <p id="coffeeRoast"></p>
+                </div>
             </div>
             
         </div>

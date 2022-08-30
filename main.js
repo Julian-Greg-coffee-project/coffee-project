@@ -48,6 +48,11 @@ var coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
+coffees.forEach(coffee => {
+    document.getElementById("coffeeName").innerHTML += coffee.name + "<br>";
+    document.getElementById("coffeeRoast").innerHTML += coffee.roast + "<br>";
+});
+
 var tbody = document.querySelector('#coffees');
 var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
