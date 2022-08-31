@@ -1,11 +1,15 @@
 "use strict"
 
 function renderCoffee(coffee) {
-    var html = '<tr class="coffee">';
-    html += '<td>' + coffee.id + '</td>';
-    html += '<td>' + coffee.name + '</td>';
-    html += '<td>' + coffee.roast + '</td>';
-    html += '</tr>';
+
+    //refactored the code to have the coffee name in a header
+    // and coffee roast in a paragraph
+    var html = '<div class="coffee col-md-6 results-container">';
+    html += '<div class="row">';
+    html += '<div class="col-auto"><h5>' + coffee.name + '</h5></div>';
+    html += '<div class="col-auto"><p>' + coffee.roast +'</p></div>';
+    html += '</div>';
+    html += '</div>';
 
     return html;
 }
@@ -47,11 +51,6 @@ var coffees = [
     {id: 13, name: 'Italian', roast: 'dark'},
     {id: 14, name: 'French', roast: 'dark'},
 ];
-
-coffees.forEach(coffee => {
-    document.getElementById("coffeeName").innerHTML += coffee.name + "<br>";
-    document.getElementById("coffeeRoast").innerHTML += coffee.roast + "<br>";
-});
 
 var tbody = document.querySelector('#coffees');
 var submitButton = document.querySelector('#submit');
