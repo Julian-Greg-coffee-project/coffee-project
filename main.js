@@ -23,6 +23,7 @@ let coffees = [
 let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
+let coffeeNameInput = document.getElementById('coffee-name-input');
 
 // Functions
 
@@ -58,13 +59,35 @@ function updateCoffees(e) {
         // Conditional to update with all coffees
         } else if (coffee.list === selectedRoast) {
             filteredCoffees.push(coffee);
-        }
+        } 
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
 tbody.innerHTML = renderCoffees(coffees);
 
-// Event Listener
+// Event Listeners
+
+let filteredCoffee = [];
+let inputCoffee = [];
 
 submitButton.addEventListener('click', updateCoffees);
+
+// TODO fix all option to render all coffee
+// Refactor as needed
+roastSelection.addEventListener('input', e => {
+    let selectedRoast = e.target.value;
+    filteredCoffee = coffees.filter(coffee => {
+        return coffee.roast.toLowerCase() === selectedRoast.toLocaleLowerCase();
+    })
+    tbody.innerHTML = renderCoffees(filteredCoffee);
+})
+
+coffeeNameInput.addEventListener('keyup', e => {
+    let userInput = e.target.value;
+    inputCoffee = filteredCoffee.filter(coffee => {
+        return coffee.name.toLowerCase().includes(userInput.toLocaleLowerCase());
+    })
+    tbody.innerHTML = renderCoffees(inputCoffee);
+})
+
