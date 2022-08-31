@@ -55,8 +55,8 @@ function updateCoffees(e) {
     coffees.forEach(function(coffee) {
         if (coffee.roast === selectedRoast) {
             filteredCoffees.push(coffee);
-
-        } else if (coffee.completeList === selectedRoast) {
+        // Conditional to update with all coffees
+        } else if (coffee.list === selectedRoast) {
             filteredCoffees.push(coffee);
         }
     });
