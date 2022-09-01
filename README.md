@@ -4,6 +4,12 @@
 
 Pair programming exercise to build a website for a fictional coffee company.   
 
+[Coffee Website](https://julian-greg-coffee-project.github.io/coffee-project/)
+
+## Demo   
+
+![Coffee Project Demo]()
+
 ## TODO
 
 - Update the HTML
