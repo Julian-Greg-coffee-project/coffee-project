@@ -25,12 +25,10 @@ let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
 let coffeeNameInput = document.getElementById('coffee-name-input');
 
+
 // Functions
 
 function renderCoffee(coffee) {
-
-    //refactored the code to have the coffee name in a header
-    // and coffee roast in a paragraph
     let html = '<div>';
     html += '<div class="row">';
     html += '<div class="col-auto"><h5>' + coffee.name + '</h5></div>';
@@ -51,48 +49,29 @@ function renderCoffees(coffees) {
 
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
+    let userInput = coffeeNameInput.value
     let selectedRoast = roastSelection.value;
     let filteredCoffees = [];
     coffees.forEach(function(coffee) {
-        if (coffee.roast === selectedRoast) {
+        // Check for user selection or typed search to push elements in filtered coffee array
+        if ((coffee.roast === selectedRoast || coffee.list === selectedRoast) && coffee.name.toLowerCase().includes(userInput.toLowerCase())) {
             filteredCoffees.push(coffee);
-        // Conditional to update with all coffees
-        } else if (coffee.list === selectedRoast) {
-            filteredCoffees.push(coffee);
-        } 
+        }
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
+
+// Default Onload
 
 tbody.innerHTML = renderCoffees(coffees);
 
 // Event Listeners
 
-let filteredCoffee = [];
-let inputCoffee = [];
-
+// Coffee name select button
 submitButton.addEventListener('click', updateCoffees);
 
-// TODO fix all option to render all coffee
-// Refactor as needed
-roastSelection.addEventListener('input', e => {
-    let selectedRoast = e.target.value;
-    filteredCoffee = coffees.filter(coffee => {
-        let list = document.getElementById('roast-selection').value;
+// Coffee name user input
+coffeeNameInput.addEventListener('input', updateCoffees);
 
-        if(list === 'list')
-            return coffee.list === 'all';
-        else
-            return coffee.roast.toLowerCase() === selectedRoast.toLocaleLowerCase();
-    })
-    tbody.innerHTML = renderCoffees(filteredCoffee);
-})
-
-coffeeNameInput.addEventListener('keyup', e => {
-    let userInput = e.target.value;
-    inputCoffee = filteredCoffee.filter(coffee => {
-        return coffee.name.toLowerCase().includes(userInput.toLocaleLowerCase());
-    })
-    tbody.innerHTML = renderCoffees(inputCoffee);
-})
-
+// Coffee name dropdown
+roastSelection.addEventListener('input', updateCoffees);
