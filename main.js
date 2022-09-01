@@ -70,6 +70,14 @@ function addCoffee(e) {
     } else {
         // Push user new coffee inputs into coffees object
         coffees.push({id: coffees.length+1, name: `${addCoffeeName.value}`, roast: `${addRoast.value}`, list: "all"});
+        //covert array to JSON string
+        let jsonArr = JSON.stringify(coffees);
+        //Store the array in local storage
+        localStorage.setItem('newCoffeeList', jsonArr);
+        // //get the string from localStorage
+        // let arr = localStorage.getItem('newCoffeeList');
+        // //covert string to valid object
+        // let newArr = JSON.parse(arr);
         // Display new coffees object
         tbody.innerHTML = renderCoffees(coffees);
         // Clear input field and set roast to default light
@@ -77,8 +85,20 @@ function addCoffee(e) {
     }
 }
 
-// Default Onload
-tbody.innerHTML = renderCoffees(coffees);
+if(localStorage.getItem('newCoffeeList') === null)
+{
+    // Default Onload
+    tbody.innerHTML = renderCoffees(coffees);
+}
+else
+{
+    //Store the array in local storage
+    let arr = localStorage.getItem('newCoffeeList');
+    //covert string to valid object
+    let newArr = JSON.parse(arr);
+    // Display new coffees object
+    tbody.innerHTML = renderCoffees(newArr);
+}
 
 // Event Listeners
 
