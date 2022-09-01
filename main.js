@@ -24,6 +24,9 @@ let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
 let coffeeNameInput = document.getElementById('coffee-name-input');
+let addRoast = document.querySelector('#add-roast-selection');
+let addCoffeeName = document.getElementById('add-coffee-name-input');
+let addSubmitCoffee = document.querySelector('#add-submit');
 
 
 // Functions
@@ -49,6 +52,8 @@ function renderCoffees(coffees) {
 
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
+    //clears the input field for the new coffee name
+    addCoffeeName.value = "";
     let userInput = coffeeNameInput.value
     let selectedRoast = roastSelection.value;
     let filteredCoffees = [];
@@ -59,6 +64,24 @@ function updateCoffees(e) {
         }
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
+}
+
+function addCoffee()
+{
+    let getNewRoast = addRoast.value;
+    let getNewCoffee = addCoffeeName.value;
+    let coffeeId = coffees.length + 1;
+    let newId = Number(coffeeId);
+
+    //create a new object
+    let newObject = {};
+
+    newObject.id = newId;
+    newObject.name = getNewCoffee;
+    newObject.roast = getNewRoast;
+    newObject.list = 'all';
+
+    coffees.push(newObject);
 }
 
 // Default Onload
@@ -75,3 +98,12 @@ coffeeNameInput.addEventListener('input', updateCoffees);
 
 // Coffee name dropdown
 roastSelection.addEventListener('input', updateCoffees);
+
+//Add new coffee roast
+addRoast.addEventListener('input', addCoffee);
+
+//Add new coffee name
+addCoffeeName.addEventListener('input', addCoffee);
+
+//Display complete coffee list to include the added coffee
+addSubmitCoffee.addEventListener('click', updateCoffees);
