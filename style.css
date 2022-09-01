@@ -23,6 +23,8 @@ label {
 
 .search-form {
     border-bottom: solid lightgray 2px;
+    padding-bottom: 2em;
+    margin-bottom: 2em;
 }
 
 /* Header */

@@ -28,7 +28,6 @@ let addRoast = document.querySelector('#add-roast-selection');
 let addCoffeeName = document.getElementById('add-coffee-name-input');
 let addSubmitCoffee = document.querySelector('#add-submit');
 
-
 // Functions
 
 function renderCoffee(coffee) {
@@ -51,9 +50,7 @@ function renderCoffees(coffees) {
 }
 
 function updateCoffees(e) {
-    e.preventDefault(); // don't submit the form, we just want to update the data
-    //clears the input field for the new coffee name
-    addCoffeeName.value = "";
+    e.preventDefault(); // don't submit the form, we just want to update the data 
     let userInput = coffeeNameInput.value
     let selectedRoast = roastSelection.value;
     let filteredCoffees = [];
@@ -66,26 +63,21 @@ function updateCoffees(e) {
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
-function addCoffee()
-{
-    let getNewRoast = addRoast.value;
-    let getNewCoffee = addCoffeeName.value;
-    let coffeeId = coffees.length + 1;
-    let newId = Number(coffeeId);
-
-    //create a new object
-    let newObject = {};
-
-    newObject.id = newId;
-    newObject.name = getNewCoffee;
-    newObject.roast = getNewRoast;
-    newObject.list = 'all';
-
-    coffees.push(newObject);
+function addCoffee(e) {
+    e.preventDefault();
+    if (!addCoffeeName.value) {
+        alert("Please enter a coffee name.")
+    } else {
+        // Push user new coffee inputs into coffees object
+        coffees.push({id: coffees.length+1, name: `${addCoffeeName.value}`, roast: `${addRoast.value}`, list: "all"});
+        // Display new coffees object
+        tbody.innerHTML = renderCoffees(coffees);
+        // Clear input field and set roast to default light
+        addCoffeeName.value = "";
+    }
 }
 
 // Default Onload
-
 tbody.innerHTML = renderCoffees(coffees);
 
 // Event Listeners
@@ -99,11 +91,5 @@ coffeeNameInput.addEventListener('input', updateCoffees);
 // Coffee name dropdown
 roastSelection.addEventListener('input', updateCoffees);
 
-//Add new coffee roast
-addRoast.addEventListener('input', addCoffee);
-
-//Add new coffee name
-addCoffeeName.addEventListener('input', addCoffee);
-
-//Display complete coffee list to include the added coffee
-addSubmitCoffee.addEventListener('click', updateCoffees);
+// Display complete coffee list to include the added coffee
+addSubmitCoffee.addEventListener('click', addCoffee);
