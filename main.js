@@ -78,7 +78,12 @@ submitButton.addEventListener('click', updateCoffees);
 roastSelection.addEventListener('input', e => {
     let selectedRoast = e.target.value;
     filteredCoffee = coffees.filter(coffee => {
-        return coffee.roast.toLowerCase() === selectedRoast.toLocaleLowerCase();
+        let list = document.getElementById('roast-selection').value;
+
+        if(list === 'list')
+            return coffee.list === 'all';
+        else
+            return coffee.roast.toLowerCase() === selectedRoast.toLocaleLowerCase();
     })
     tbody.innerHTML = renderCoffees(filteredCoffee);
 })
