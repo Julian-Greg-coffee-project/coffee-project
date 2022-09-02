@@ -20,13 +20,13 @@ let coffees = [
 
 // Variables
 
-let tbody = document.querySelector('#coffees');
-let submitButton = document.querySelector('#submit');
-let roastSelection = document.querySelector('#roast-selection');
-let coffeeNameInput = document.getElementById('coffee-name-input');
-let addRoast = document.querySelector('#add-roast-selection');
-let addCoffeeName = document.getElementById('add-coffee-name-input');
-let addSubmitCoffee = document.querySelector('#add-submit');
+const tbody = document.querySelector('#coffees');
+const submitButton = document.querySelector('#submit');
+const roastSelection = document.querySelector('#roast-selection');
+const coffeeNameInput = document.getElementById('coffee-name-input');
+const addRoast = document.querySelector('#add-roast-selection');
+const addCoffeeName = document.getElementById('add-coffee-name-input');
+const addSubmitCoffee = document.querySelector('#add-submit');
 
 // Functions
 
